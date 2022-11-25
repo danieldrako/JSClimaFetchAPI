@@ -54,6 +54,8 @@ function consultarAPI(ciudad,pais){
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`; 
 
+    Spinner();
+
     fetch(url)
         .then(respuesta => respuesta.json())
         .then( datos => {
@@ -115,6 +117,29 @@ function limpiarHTML(){
     while(resultado.firstChild){
         resultado.removeChild(resultado.firstChild);
     }
+}
+
+function Spinner(){
+
+    limpiarHTML();
+
+    const divSpinner = document.createElement('div');
+    divSpinner.classList.add('sk-cube-grid');
+
+    divSpinner.innerHTML = `
+        <div class="sk-cube sk-cube1"></div>
+        <div class="sk-cube sk-cube2"></div>
+        <div class="sk-cube sk-cube3"></div>
+        <div class="sk-cube sk-cube4"></div>
+        <div class="sk-cube sk-cube5"></div>
+        <div class="sk-cube sk-cube6"></div>
+        <div class="sk-cube sk-cube7"></div>
+        <div class="sk-cube sk-cube8"></div>
+        <div class="sk-cube sk-cube9"></div>
+    `;
+
+    resultado.appendChild(divSpinner);
+
 }
 
 
